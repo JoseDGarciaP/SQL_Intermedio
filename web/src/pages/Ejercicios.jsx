@@ -48,9 +48,10 @@ function Practice({ storageKey }) {
     setCode(v);
     try { localStorage.setItem(storageKey, v); } catch { /* sin almacenamiento */ }
   };
-  const exec = async () => {
+  const exec = async (text) => {
+    const sql = typeof text === 'string' ? text : code;
     setState({ status: 'running' });
-    try { setState({ status: 'done', ...(await run(code)) }); }
+    try { setState({ status: 'done', ...(await run(sql)) }); }
     catch (error) { setState({ status: 'error', error }); }
   };
 
@@ -58,7 +59,7 @@ function Practice({ storageKey }) {
     <div className="practice">
       <SqlEditor value={code} onChange={save} onRun={exec} minHeight="120px" label="Tu solución" />
       <div className="sqlblock-actions">
-        <button type="button" className="btn btn-run" onClick={exec} disabled={state.status === 'running'}>
+        <button type="button" className="btn btn-run" onClick={() => exec()} disabled={state.status === 'running'}>
           {state.status === 'running' ? 'Ejecutando…' : 'Probar mi consulta'}
         </button>
         <span className="kbd-hint">Ctrl + Enter para ejecutar</span>

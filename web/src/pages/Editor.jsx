@@ -21,7 +21,8 @@ export default function Editor() {
     try { localStorage.setItem(KEY, v); } catch { /* sin almacenamiento */ }
   };
 
-  const exec = useCallback(async (text = code) => {
+  const exec = useCallback(async (text) => {
+    if (typeof text !== 'string') text = code;
     setState({ status: 'running' });
     try { setState({ status: 'done', ...(await run(text)) }); }
     catch (error) { setState({ status: 'error', error }); }
@@ -49,7 +50,7 @@ export default function Editor() {
 
       <div className="editor-layout">
         <div className="editor-main">
-          <SqlEditor value={code} onChange={save} onRun={() => exec()} minHeight="200px" />
+          <SqlEditor value={code} onChange={save} onRun={(t) => exec(t)} minHeight="200px" />
           <div className="sqlblock-actions">
             <button type="button" className="btn btn-run" onClick={() => exec()} disabled={state.status === 'running'}>
               <Play size={16} fill="currentColor" /> {state.status === 'running' ? 'Ejecutando…' : 'Ejecutar'}

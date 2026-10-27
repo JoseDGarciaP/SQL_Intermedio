@@ -26,7 +26,7 @@ export default function SqlBlock({ sql: original, resultTitle = 'Resultado' }) {
     }
   }, []);
 
-  const onRun = useCallback(() => execute(code), [code, execute]);
+  const onRun = useCallback((text) => execute(typeof text === 'string' ? text : code), [code, execute]);
 
   const copy = async () => {
     try {
@@ -49,7 +49,7 @@ export default function SqlBlock({ sql: original, resultTitle = 'Resultado' }) {
       </div>
 
       <div className="sqlblock-actions">
-        <button type="button" className="btn btn-run" onClick={onRun} disabled={state.status === 'running'}>
+        <button type="button" className="btn btn-run" onClick={() => onRun()} disabled={state.status === 'running'}>
           <Play size={16} fill="currentColor" />
           {state.status === 'running' ? 'Ejecutando…' : 'Ejecutar'}
         </button>

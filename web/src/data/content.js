@@ -270,8 +270,8 @@ export const EJERCICIOS = {
     {
       n: 2, title: 'Productos pedidos por año', topics: 'Joins · SUM() · Group by',
       q: 'Listar el año y la cantidad de productos pedidos por año. Ordenar en forma descendente por el año.',
-      sql: 'SELECT extract(YEAR FROM p.fecha) as año, SUM(d.cant) as cantidad\nFROM supermarket.pedido p INNER JOIN supermarket.detalle_pedido d\nON (p.id_ped = d.id_ped)\nGROUP BY extract(YEAR FROM p.fecha)\nORDER BY 1;',
-      note: 'La consulta hace una unión entre las tablas PEDIDO y DETALLE_PEDIDO, luego agrupa por año y calcula la cantidad sumando los valores correspondientes a cada año. Al final lista el año y la cantidad. La función EXTRACT() extrae un campo de un valor de fecha/hora.',
+      sql: 'SELECT extract(YEAR FROM p.fecha) as año, SUM(d.cant) as cantidad\nFROM supermarket.pedido p INNER JOIN supermarket.detalle_pedido d\nON (p.id_ped = d.id_ped)\nGROUP BY extract(YEAR FROM p.fecha)\nORDER BY 1 DESC;',
+      note: 'La consulta hace una unión entre las tablas PEDIDO y DETALLE_PEDIDO, luego agrupa por año y calcula la cantidad sumando los valores correspondientes a cada año. Al final lista el año y la cantidad, ordenados del año más reciente al más antiguo. La función EXTRACT() extrae un campo de un valor de fecha/hora.',
       link: { href: 'https://www.postgresql.org/docs/current/functions-datetime.html', label: 'Ver EXTRACT() en la documentación de PostgreSQL' },
     },
     {

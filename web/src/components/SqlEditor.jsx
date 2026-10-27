@@ -4,7 +4,8 @@ import { EditorView, keymap } from '@codemirror/view';
 import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
 import { tags as t } from '@lezer/highlight';
 import { Prec } from '@codemirror/state';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
+import { closeCompletion } from '@codemirror/autocomplete';
 
 // Esquemas para el autocompletado (escuela.estudiante, supermarket.pedido, ...)
 const SCHEMA = {
@@ -41,6 +42,15 @@ const theme = EditorView.theme({
 }, { dark: true });
 
 export default function SqlEditor({ value, onChange, onRun, minHeight = '140px', autoFocus = false, label = 'Editor de consultas SQL' }) {
+  // Guarda siempre la última función para que el atajo no use una versión vieja.
+  const onRunRef = useRef(onRun);
+  onRunRef.current = onRun;
+  const runShortcut = (view) => {
+    closeCompletion(view);
+    onRunRef.current?.(view.state.doc.toString());
+    return true;
+  };
+
   const extensions = useMemo(() => [
     sql({ dialect: PostgreSQL, schema: SCHEMA, upperCaseKeywords: true }),
     syntaxHighlighting(highlight),
@@ -48,10 +58,11 @@ export default function SqlEditor({ value, onChange, onRun, minHeight = '140px',
     EditorView.lineWrapping,
     EditorView.contentAttributes.of({ 'aria-label': label }),
     Prec.highest(keymap.of([
-      { key: 'Mod-Enter', run: () => { onRun?.(); return true; } },
-      { key: 'Shift-Enter', run: () => { onRun?.(); return true; } },
+      { key: 'Mod-Enter', run: runShortcut },
+      { key: 'Shift-Enter', run: runShortcut },
     ])),
-  ], [onRun, label]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  ], [label]);
 
   return (
     <CodeMirror
