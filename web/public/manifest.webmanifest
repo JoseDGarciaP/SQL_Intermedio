@@ -1,0 +1,14 @@
+{
+  "name": "SQL Intermedio",
+  "short_name": "SQL Intermedio",
+  "description": "Joins, Funciones Agregadas y Subconsultas en PostgreSQL. UFPSO - GIPCO.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F3F6F8",
+  "theme_color": "#C87239",
+  "icons": [
+    { "src": "images/sql2.png", "sizes": "48x48", "type": "image/png" }
+  ]
+}
