@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import Venn from '../components/Venn.jsx';
 import { APP, JOINS, img } from '../data/content.js';
+import ThemeToggle from '../components/ThemeToggle.jsx';
 
 const CYCLE = JOINS.items.map((j) => ({ id: j.id, title: j.title }));
 
@@ -20,6 +21,7 @@ export default function Welcome() {
 
   return (
     <main className="welcome">
+      <ThemeToggle className="icon-btn welcome-theme" />
       <div className="welcome-inner">
         <img className="welcome-logo" src={img('sql2.png')} alt="" width="56" height="56" />
         <h1 className="welcome-title">SQL<br />Intermedio</h1>

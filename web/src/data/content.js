@@ -338,13 +338,18 @@ export const EJERCICIOS = {
 
 export const ACERCA = {
   paragraphs: [
-    'La aplicación SQL Intermedio, permite aprender sobre Joins, Funciones agregadas ó de resumen y subconsultas.',
-    'La aplicación se utiliza como estrategia para mejorar las habilidades en temas de SQL Intermedio donde algunos estudiantes del programa de Ingeniería de Sistemas de la Universidad Francisco de Paula Santander Ocaña (UFPSO) han tenido dificultades de aprendizaje.',
-    'La aplicación provee una lista de once (11) ejercicios SQL con su respectiva solución y acceso a un repositorio dispuesto en la plataforma Github donde se aloja el código SQL.',
-    'La aplicación se encuentra disponible para su uso de forma gratuita y además puede ser utilizada por cualquier persona que quiera aprender SQL Intermedio.',
+    'SQL Intermedio es una aplicación para aprender y practicar Joins, Funciones Agregadas o de resumen y Subconsultas en PostgreSQL.',
+    'Nació como una estrategia para fortalecer las habilidades en SQL Intermedio de los estudiantes del programa de Ingeniería de Sistemas de la Universidad Francisco de Paula Santander Ocaña (UFPSO), en temas donde suelen encontrar mayores dificultades.',
+    'Cada tema incluye su explicación, la sintaxis, un diagrama y ejemplos resueltos. Además, cuenta con once (11) ejercicios con su respectiva solución y un editor para escribir consultas propias.',
+    'Es de uso libre y gratuito para cualquier persona que quiera aprender SQL Intermedio.',
   ],
-  author: 'Byron Cuesta Quintero',
-  authorRole: 'Docente del Departamento de Sistemas e Informática - Facultad de Ingeniería - UFPSO. Director del Grupo de Investigación en Pensamiento Computacional (GIPCO).',
-  contact: 'byroncuesta@ufpso.edu.co',
-  updated: 'Contenido actualizado el 7 de marzo de 2024.',
+  web: {
+    title: 'Sobre esta versión web',
+    paragraphs: [
+      'Esta versión web está basada en la aplicación y el repositorio originales del profesor Byron Cuesta Quintero, del Grupo de Investigación en Pensamiento Computacional (GIPCO) de la UFPSO.',
+      'Surge con el propósito de llevar este material más allá de Android, para que cualquier estudiante pueda consultarlo desde su celular, tableta o computador, sin importar el sistema operativo que utilice.',
+      'Conserva los contenidos de la aplicación original y añade la posibilidad de ejecutar y modificar cada consulta en una base de datos PostgreSQL que funciona directamente en el navegador.',
+    ],
+  },
+  updated: 'Contenido original actualizado el 7 de marzo de 2024.',
 };

@@ -40,12 +40,12 @@ export default function Venn({ type = 'inner', size = 'md', labels = ['A', 'B'],
       <circle {...ca} className="venn-ring" />
       <circle {...cb} className="venn-ring" />
 
-      <text x="60" y="76" className="venn-label">{labels[0]}</text>
-      <text x="160" y="76" className="venn-label">{labels[1]}</text>
+      <text x="60" y="76" className={`venn-label ${onlyA ? 'on-zone' : ''}`}>{labels[0]}</text>
+      <text x="160" y="76" className={`venn-label ${onlyB ? 'on-zone' : ''}`}>{labels[1]}</text>
       {sublabels && (
         <>
-          <text x="60" y="94" className="venn-sub">{sublabels[0]}</text>
-          <text x="160" y="94" className="venn-sub">{sublabels[1]}</text>
+          <text x="60" y="94" className={`venn-sub ${onlyA ? 'on-zone' : ''}`}>{sublabels[0]}</text>
+          <text x="160" y="94" className={`venn-sub ${onlyB ? 'on-zone' : ''}`}>{sublabels[1]}</text>
         </>
       )}
     </svg>

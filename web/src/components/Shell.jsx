@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeft, SquareTerminal, Info, ChevronRight, ChevronLeft } from 'lucide-react';
 import { SECTIONS, img } from '../data/content.js';
+import ThemeToggle from './ThemeToggle.jsx';
 
 const NAV = [
   ...SECTIONS.map((s) => ({ to: `/${s.id}`, label: s.title, icon: s.icon })),
@@ -61,6 +62,7 @@ export function Page({ title, back = '/inicio', children, wide = false }) {
             <img className="topbar-logo" src={img('sql2.png')} alt="" width="30" height="30" />
           )}
           <h1 className="topbar-title">{title}</h1>
+          <ThemeToggle />
           <Link to="/editor" className="icon-btn" aria-label="Abrir el editor SQL" title="Editor SQL">
             <SquareTerminal size={22} />
           </Link>

@@ -24,7 +24,7 @@ export default function Home() {
         </a>
         <Link to="/acerca" className="tool">
           <Info size={22} aria-hidden="true" />
-          <span><strong>Acerca de</strong>Autor, propósito y versión de la aplicación.</span>
+          <span><strong>Acerca de</strong>Propósito de la aplicación y origen de esta versión web.</span>
         </Link>
       </div>
     </Page>

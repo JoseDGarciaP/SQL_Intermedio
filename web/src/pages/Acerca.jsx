@@ -1,5 +1,4 @@
-import { Mail, Globe } from 'lucide-react';
-import { GithubIcon, Page } from '../components/Shell.jsx';
+import { GithubIcon, Page, Section } from '../components/Shell.jsx';
 import { ACERCA, APP, img } from '../data/content.js';
 
 export default function Acerca() {
@@ -17,17 +16,16 @@ export default function Acerca() {
         {ACERCA.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
       </div>
 
-      <div className="author">
-        <p className="author-name">{ACERCA.author}</p>
-        <p>{ACERCA.authorRole}</p>
+      <Section title={ACERCA.web.title} className="about-web">
+        <div className="prose">
+          {ACERCA.web.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+        </div>
         <ul className="links">
-          <li><a href={`mailto:${ACERCA.contact}`}><Mail size={18} aria-hidden="true" /> {ACERCA.contact}</a></li>
-          <li><a href={APP.repo} target="_blank" rel="noreferrer"><GithubIcon size={18} /> Repositorio del código SQL</a></li>
-          <li><a href={APP.ufpso} target="_blank" rel="noreferrer"><Globe size={18} aria-hidden="true" /> ufpso.edu.co</a></li>
+          <li><a href={APP.repo} target="_blank" rel="noreferrer"><GithubIcon size={18} /> Repositorio original</a></li>
         </ul>
-      </div>
+      </Section>
 
-      <p className="hint">{ACERCA.updated} Las consultas se ejecutan con PostgreSQL directamente en el navegador mediante PGlite.</p>
+      <p className="hint about-foot">{ACERCA.updated}</p>
     </Page>
   );
 }
